@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "mobile-flashcards-udacity",
+    "slug": "mobile-flashcards-udacity",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "mobile-flashcards-udacity"
+}
