@@ -64,3 +64,11 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 })
+
+const mapStateToProps = (decks) => {
+    return {
+        deckIds: Object.keys(decks)
+    }
+}
+
+export default connect(mapStateToProps)(Decks)
