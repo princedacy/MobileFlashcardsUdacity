@@ -43,7 +43,7 @@ const Decks = (props) => {
         <View style={styles.container}>
             <ScrollView refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />} >
                 {deckIds.map((deck) => (
-                    <TouchableOpacity key={deck} onPress={() => { props.navigation.navigate('DeckDetail', { deckId: deck, title: deck }) }}>
+                    <TouchableOpacity key={deck} onPress={() => { props.navigation.navigate('DeckDetails', { deckId: deck, title: deck }) }}>
                         <Deck deck={deck} key={deck} />
                     </TouchableOpacity>
                 ))}

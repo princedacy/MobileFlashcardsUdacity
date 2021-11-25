@@ -2,7 +2,7 @@ import 'react-native-gesture-handler'
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-// import Router from './Router';
+import Router from './router';
 import reducer from './reducers'
 
 class App extends Component {

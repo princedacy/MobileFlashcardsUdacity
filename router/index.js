@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { pink } from '../utils/colors'
 import Constants from 'expo-constants'
 import { StatusBar, View } from 'react-native'
-// import Nav from ''
+import Nav from './stackNavigator'
 
 const Router = () => {
     return (

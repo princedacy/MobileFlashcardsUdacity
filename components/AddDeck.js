@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
-import {gray, white, pink} from '../utils/color'
+import {gray, white, pink} from '../utils/colors'
 import {handleAddDeckTitle} from '../actions'
 
 class AddDeck extends Component {
@@ -13,7 +13,7 @@ class AddDeck extends Component {
         const {deckTitle} = this.state;
         this.setState({deckTitle: ''});
         this.props.dispatch(handleAddDeckTitle(deckTitle))
-        this.props.navigation.navigate('DeckDetail', {
+        this.props.navigation.navigate('DeckDetails', {
             deckId: deckTitle,
             title: deckTitle
         })
