@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { connect } from 'react-redux'
-import { white, pink, red, green } from '../utils/colors'
-
+import { white, blue, red, green } from '../utils/colors'
+import {clearLocalNotification, setLocalNotification} from '../utils/notificationsHelper'
 
 class TakeQuiz extends Component {
     state = {
@@ -19,9 +19,9 @@ class TakeQuiz extends Component {
             currentQuestionIndex: newIndex + 1,
             correctAnswers: response ? newCorrectAnswer + 1 : newCorrectAnswer,
         })
-        // if (this.props.questions.length === newIndex + 1) {
-
-        // }
+        if (this.props.questions.length === newIndex + 1) {
+            clearLocalNotification().then(setLocalNotification())
+        }
     }
 
     handleReset = () => {
@@ -62,7 +62,7 @@ class TakeQuiz extends Component {
                     </Text>
                     <View>
                         <TouchableOpacity style={[styles.button, styles.transparentButton]} onPress={()=> this.handleReset()}>
-                            <Text style={{color: pink}}>Restart Quiz</Text>
+                            <Text style={{color: blue}}>Restart Quiz</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={[styles.button, styles.coloredButton]} onPress={()=>{
                             navigation.navigate('DeckDetails', {
@@ -89,15 +89,14 @@ class TakeQuiz extends Component {
                 </View>
                 {showAnswer && (
                     <View>
-                        <TouchableOpacity style={[styles.button, {backgroundColor: pink}]} onPress={()=> this.setState({showAnswer: true})}>
-                            <Text style={{color: white}}>Show Answer</Text>
-                        </TouchableOpacity>
+                        <Text style={styles.answerLabel}>Answer</Text>
+                        <Text style={styles.quizAnswer}>{questions[currentQuestionIndex].answer}</Text>
                     </View>
                 )}
                 <View style={styles.buttonsGroup}>
                     {!showAnswer && (
                         <View>
-                            <TouchableOpacity style={[styles.button, {backgroundColor: pink}]} onPress={()=> this.setState({showAnswer: true})}>
+                            <TouchableOpacity style={[styles.button, {backgroundColor: blue}]} onPress={()=> this.setState({showAnswer: true})}>
                                 <Text style={{color: white}}>Show Answer</Text>
                             </TouchableOpacity>
                         </View>
@@ -154,11 +153,16 @@ const styles = StyleSheet.create({
     },
     transparentButton: {
         backgroundColor: white,
-        borderColor: pink,
+        borderColor: blue,
         borderWidth: 1
     },
     coloredButton: {
-        backgroundColor: pink
+        backgroundColor: blue
+    }, 
+    answerLabel: {
+        color: red,
+        textAlign: 'center',
+        fontSize: 20
     }
 })
 

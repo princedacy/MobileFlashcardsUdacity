@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
-import { pink } from '../utils/colors'
+import { blue } from '../utils/colors'
 import Constants from 'expo-constants'
 import { StatusBar, View } from 'react-native'
 import Nav from './stackNavigator'
@@ -8,7 +8,7 @@ import Nav from './stackNavigator'
 const Router = () => {
     return (
         <NavigationContainer>
-            <AppStatusbar backgroundColor={pink} barStyle={'light-content'} />
+            <AppStatusbar backgroundColor={blue} barStyle={'light-content'} />
             <Nav />
         </NavigationContainer>
     )

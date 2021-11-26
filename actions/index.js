@@ -13,7 +13,7 @@ const fetchDecks = (decks) => {
 }
 
 export const handleFetchDecks = () => {
-    return (dispatch) => {
+    return async (dispatch) => {
         return getDecks().then((decks)=> dispatch(fetchDecks(decks)))
     }
 } 

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { connect } from 'react-redux'
 import {gray} from '../utils/colors'
 
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 const mapStateToProps = (decks, {deck}) => {
     return {
         deck: decks[deck],
+        deckId: deck
     }
 }
 

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
 import {connect} from 'react-redux'
-import {gray, white, pink} from '../utils/colors'
+import {gray, white, blue} from '../utils/colors'
 import {handleAddDeckTitle} from '../actions'
 
 class AddDeck extends Component {
@@ -30,7 +30,7 @@ class AddDeck extends Component {
                 <TextInput style={styles.textBox} placeholder={'Deck title'} onChangeText={(deckTitle)=> this.setState({deckTitle})} value={deckTitle} />
 
                 <TouchableOpacity onPress={this.handleSubmit} style={styles.button} disabled={deckTitle === ''}>
-                    <Text style={{color: white}}>Submit</Text>
+                    <Text style={{color: white}}>Create Deck</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -59,13 +59,14 @@ const styles = StyleSheet.create({
         paddingLeft: 50,
         paddingRight: 50,
         borderRadius: 10,
-        backgroundColor: pink
+        backgroundColor: blue
     },
     textBox: {
         borderColor: gray,
         borderWidth: 2,
         borderRadius: 10,
         width: 300,
+        height: 50,
         paddingLeft: 10
     }
 })

@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { pink, white } from "../utils/colors";
+import { blue, white } from "../utils/colors";
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { Platform } from "react-native";
 import AddDeck from "../components/AddDeck";
@@ -37,10 +37,10 @@ const tabnavigatorConfig = {
         header: null
     },
     tabBarOptions: {
-        activeTintColor: Platform.OS === 'ios' ? pink : white,
+        activeTintColor: Platform.OS === 'ios' ? blue : white,
         style: {
             height: 56,
-            backgroundColor: Platform.OS === 'ios' ? white : pink,
+            backgroundColor: Platform.OS === 'ios' ? white : blue,
             shadowOffset: {
                 width: 0,
                 height: 3

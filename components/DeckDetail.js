@@ -2,12 +2,12 @@ import React, {Component} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity, Animated } from 'react-native'
 import {connect} from 'react-redux'
 import {AppLoading} from 'expo'
-import { gray, white, red, pink } from '../utils/colors'
+import { gray, white, red, blue } from '../utils/colors'
 import { handleDeleteDeck } from '../actions'
 
 class DeckDetails extends Component {
     state = {
-        anmationValue: new Animated.Value(1)
+        animationValue: new Animated.Value(1)
     }
 
     deleteDeck = (deckId) => {
@@ -19,9 +19,9 @@ class DeckDetails extends Component {
         const {animationValue} = this.state
 
         Animated.sequence([
-            Animated.timing(animationValue, {duration: 200, toValue: 1}),
-            Animated.spring(animationValue, {toValue: 1, friction: 4})
-        ].start())
+            Animated.timing(animationValue, {duration: 200, toValue: 1, useNativeDriver: true}),
+            Animated.spring(animationValue, {toValue: 1, friction: 4, useNativeDriver: true})
+        ]).start()
     }
 
     render() {
@@ -40,8 +40,16 @@ class DeckDetails extends Component {
                 <Animated.Text style={[styles.cardsNumber, {transform: [{scale: animationValue}]}]}>
                     {deck.questions && deck.questions.length} cards
                 </Animated.Text>
-                <View style={styles.button}>
-
+                <View style={styles.buttonsGroup}>
+                    <TouchableOpacity style={[styles.button, styles.transparentBtn]} onPress={()=> {navigation.navigate('AddCard', {deckId})}}>
+                        <Text style={{color: blue}}>Add Card</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={[styles.button, styles.coloredBtn]} onPress={()=> {navigation.navigate('TakeQuiz', {deckId})}}>
+                        <Text style={{color: white}}>Start Quiz</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={()=> this.deleteDeck(deckId)}>
+                        <Text style={styles.answerLabel}>Delete Deck</Text>
+                    </TouchableOpacity>
                 </View>
             </View>    
         )
@@ -73,11 +81,11 @@ const styles = StyleSheet.create({
     },
     transparentBtn: {
         backgroundColor: white,
-        borderColor: pink,
+        borderColor: blue,
         borderWidth: 1
     },
     coloredBtn: {
-        backgroundColor: pink
+        backgroundColor: blue
     },
     buttonsGroup: {
         marginTop: 100

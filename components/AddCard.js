@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import {gray, white, pink} from '../utils/colors'
+import {gray, white, blue} from '../utils/colors'
 import {connect} from 'react-redux'
 import {handleAddCard} from '../actions'
 
@@ -26,7 +26,7 @@ class AddCard extends Component {
                 <TextInput style={styles.textBox} placeholder={'Question'} onChangeText={(question)=> this.setState({question})} value={question}/>
                 <TextInput style={styles.textBox} placeholder={'Answer'} onChangeText={(answer)=> this.setState({answer})} value={answer}/>
                 <TouchableOpacity style={styles.button} disabled={question === '' || answer === ''} onPress={()=>this.handleSubmit(deckId)}>
-                    <Text style={{color: white}}>Submit</Text>
+                    <Text style={{color: white}}>Add Card</Text>
                 </TouchableOpacity>
             </View>
         )
@@ -55,13 +55,14 @@ const styles = StyleSheet.create({
         paddingLeft: 50,
         paddingRight: 50,
         borderRadius: 10,
-        backgroundColor: pink
+        backgroundColor: blue
     },
     textBox: {
         borderColor: gray,
         borderWidth: 2,
         borderRadius: 10,
         width: 300,
+        height: 50,
         paddingLeft: 10,
         marginBottom: 20
     }

@@ -1,14 +1,14 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
-import { white, pink } from '../utils/colors'
+import { white, blue } from '../utils/colors'
 import TabNav from './tabNavigator'
-import DeckDetails from '../components/DeckDetails'
+import DeckDetails from '../components/DeckDetail'
 import AddCard from '../components/AddCard'
 import TakeQuiz from '../components/TakeQuiz'
 
-const StackNavigatorConfig = {
-    headerMode: 'screen'
-}
+// const StackNavigatorConfig = {
+//     headerMode: 'screen'
+// }
 
 const StackConfig = {
     TabNav: {
@@ -19,33 +19,34 @@ const StackConfig = {
     DeckDetails: {
         name: 'DeckDetails',
         component: DeckDetails,
-        options: {
-            headerTintColor: white,
-            headerStyle: {
-                backgroundColor: pink
-            }
-        }
+        // screenOptions: {
+        //     headerMode: 'screen',
+        //     headerTintColor: white,
+        //     headerStyle: {
+        //         backgroundColor: blue
+        //     }
+        // }
     },
     AddCard: {
         name: 'AddCard',
         component: AddCard,
         options: {
-            headerTintColor: white,
-            headerStyle: {
-                backgroundColor: pink
-            },
+            // headerTintColor: white,
+            // headerStyle: {
+            //     backgroundColor: blue
+            // },
             title: 'Add card'
         }
     },
     TakeQuiz: {
         name: 'TakeQuiz',
         component: TakeQuiz,
-        options: {
-            headerTintColor: white,
-            headerStyle: {
-                backgroundColor: pink
-            }
-        }
+        // options: {
+        //     headerTintColor: white,
+        //     headerStyle: {
+        //         backgroundColor: blue
+        //     }
+        // }
     }
 }
 
@@ -53,7 +54,7 @@ const Stack = createStackNavigator();
 
 const StackNavigator = () => {
     return (
-        <Stack.Navigator {...StackNavigatorConfig}>
+        <Stack.Navigator screenOptions={{headerMode: 'screen', headerTintColor: white, headerStyle: {backgroundColor: blue}}}>
             <Stack.Screen {...StackConfig['TabNav']}/>
             <Stack.Screen {...StackConfig['DeckDetails']} options={({route})=>({
                 ...StackConfig['DeckDetails'].options,
